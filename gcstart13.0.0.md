@@ -1,7 +1,6 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-> By Bai Bin(1600013520@pku.edu.cn)
-
-> Last updated: 2021/02/01
+#### > By Bai Bin(1600013520@pku.edu.cn)
+#### > Last updated: 2021/02/01
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 
@@ -66,7 +65,7 @@ see also https://github.com/geoschem/geos-chem-cloud/issues/35
 
 > git submodule update --init --recursive
 
-\# you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc for convenience
+you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc for convenience
  
 ### 6. copy run directory
 > cd run/
@@ -119,12 +118,19 @@ see also https://github.com/geoschem/geos-chem-cloud/issues/35
 \# copy it to your own run dir and modify
 
 
-10. check your task state
-qstat -u <username>
-# for me, it’s qstat -u bbai32
+### 10. check your task state
+> qstat -u <username>
 
-11. other useful commands
-qdel <job id> #kill task
-pace-check-queue -c inferno  #check nodes state
-pace-check-queue -s inferno  #check nodes property
-checkjob <job id>
+To check your name, use
+
+> whoami
+
+### 11. other useful commands
+
+> qdel <job id> #kill task
+
+> pace-check-queue -c inferno  #check nodes state
+
+> pace-check-queue -s inferno  #check nodes property
+
+> checkjob <job id>
