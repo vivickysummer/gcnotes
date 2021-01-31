@@ -75,7 +75,7 @@ you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc f
 
  need to type ExtData dir for first time:
 
-/storage/coda1/p-pliu40/0/shared/GEOS-Chem/data/ExtData
+> /storage/coda1/p-pliu40/0/shared/GEOS-Chem/data/ExtData
 
 and finish your options and set dir to be copied into
 
