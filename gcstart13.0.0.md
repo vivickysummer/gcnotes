@@ -134,7 +134,7 @@ to check your name, use
 
 ### 11. other useful commands
 
-> qdel <job id> #kill task
+> qdel <<job id>> #kill task
 
 > pace-check-queue -c inferno  #check nodes state
 
