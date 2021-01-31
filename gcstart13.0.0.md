@@ -1,6 +1,7 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-#### > By Bai Bin(1600013520@pku.edu.cn)
-#### > Last updated: 2021/02/01
+> By Bai Bin(1600013520@pku.edu.cn)
+
+> Last updated: 2021/02/01
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 
@@ -72,14 +73,14 @@ you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc f
 
 > ./createRunDir.sh
 
-\# need to type ExtData dir for first time:
+ need to type ExtData dir for first time:
 
-\# /storage/coda1/p-pliu40/0/shared/GEOS-Chem/data/ExtData
+/storage/coda1/p-pliu40/0/shared/GEOS-Chem/data/ExtData
 
-\# and finish your options and set dir to be copied into
+and finish your options and set dir to be copied into
 
 ### 7. set GEOS-Chem task
-\# come to the directory you just created, here I show my setting:
+come to the directory you just created, here I show my setting:
 
 > cd {home}/GC/rundirs/gc_4x5_fullchem/
 
@@ -90,17 +91,17 @@ you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc f
 > vi HISTORY.rc          #choose preferred output
 
 ### 8. build run environment
-\# do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
+do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
 
 > cd build
 
 > source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.bashrc 
 
-\# (copy it to your own home dir so you can just source ~/.bashrc)
+(copy it to your own home dir so you can just source ~/.bashrc)
 
 > source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.GC 
 
-\# (copy it to your own dir so you can just source ~/.GC)
+(copy it to your own dir so you can just source ~/.GC)
 
 > cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 
@@ -109,19 +110,19 @@ you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc f
 > make install
 
 ### 9. submit task
-\# now you will find 'gcclassic' in your dir
+now you will find 'gcclassic' in your dir
 
 > qsub task.pbs
 
-\# see template in /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs
+see template in /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs
 
-\# copy it to your own run dir and modify
+copy it to your own run dir and modify
 
 
 ### 10. check your task state
 > qstat -u <username>
 
-To check your name, use
+to check your name, use
 
 > whoami
 
