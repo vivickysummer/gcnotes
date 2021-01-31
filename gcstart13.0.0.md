@@ -1,5 +1,5 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-> By Bai Bin(1600013520@pku.edu.cn)
+> By *Bai Bin*(*1600013520@pku.edu.cn*)
 
 > Last updated: 2021/02/01
 
@@ -66,7 +66,7 @@ see also https://github.com/geoschem/geos-chem-cloud/issues/35
 
 > git submodule update --init --recursive
 
-you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc for convenience
+you may add '**alias gsu="git submodule update --init --recursive"**' in **~/.bashrc** for convenience
  
 ### 6. copy run directory
 > cd run/
@@ -101,11 +101,11 @@ do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
 
 > source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.bashrc 
 
-(copy it to your own home dir so you can just source ~/.bashrc)
+copy it to your own home dir so you can just **source ~/.bashrc**
 
 > source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.GC 
 
-(copy it to your own dir so you can just source ~/.GC)
+copy it to your own dir so you can just **source ~/.GC**
 
 > cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 
@@ -116,7 +116,7 @@ do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
 see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_with_CMake
 
 ### 9. submit task
-now you will find 'gcclassic' in your dir
+now you will find '**gcclassic**' in your dir
 
 > qsub task.pbs
 
@@ -126,7 +126,7 @@ copy it to your own run dir and modify
 
 
 ### 10. check your task state
-> qstat -u "username"
+> qstat -u *username*
 
 to check your name, use
 
@@ -134,10 +134,10 @@ to check your name, use
 
 ### 11. other useful commands
 
-> qdel "job id" #kill task
+> qdel *job id* #kill task
 
 > pace-check-queue -c inferno  #check nodes state
 
 > pace-check-queue -s inferno  #check nodes property
 
-> checkjob "job id"
+> checkjob *job id*
