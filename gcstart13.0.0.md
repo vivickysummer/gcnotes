@@ -79,6 +79,8 @@ you may add 'alias gsu="git submodule update --init --recursive"' in ~/.bashrc f
 
 and finish your options and set dir to be copied into
 
+see more at http://wiki.seas.harvard.edu/geos-chem/index.php/Creating_run_directories_for_GEOS-Chem_13.0.0_and_later
+
 ### 7. set GEOS-Chem task
 come to the directory you just created, here I show my setting:
 
@@ -89,6 +91,8 @@ come to the directory you just created, here I show my setting:
 > vi HEMCO.Config.rc     # shut-down several offline emissions and use online extensions
 
 > vi HISTORY.rc          #choose preferred output
+
+see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
 
 ### 8. build run environment
 do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
@@ -108,6 +112,8 @@ do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
 > make -j
 
 > make install
+
+see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_with_CMake
 
 ### 9. submit task
 now you will find 'gcclassic' in your dir
