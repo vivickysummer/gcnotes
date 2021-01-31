@@ -126,7 +126,7 @@ copy it to your own run dir and modify
 
 
 ### 10. check your task state
-> qstat -u <username>
+> qstat -u "username"
 
 to check your name, use
 
@@ -134,10 +134,10 @@ to check your name, use
 
 ### 11. other useful commands
 
-> qdel <<job id>> #kill task
+> qdel "job id" #kill task
 
 > pace-check-queue -c inferno  #check nodes state
 
 > pace-check-queue -s inferno  #check nodes property
 
-> checkjob <job id>
+> checkjob "job id"
