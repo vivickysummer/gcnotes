@@ -3,10 +3,15 @@
 > Last updated: 2021/02/01
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 
+
 \##==================================================================
+
 \# if you are in Pengfei Liu’s group at Gatech
+
 \# skip step 1-3 and start from step 4
+
 \# spack is already installed!!!
+
 \##==================================================================
 
 ### 1. download SPACK in home directory
