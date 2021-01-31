@@ -84,7 +84,7 @@ see more at http://wiki.seas.harvard.edu/geos-chem/index.php/Creating_run_direct
 ### 7. set GEOS-Chem task
 come to the directory you just created, here I show my setting:
 
-> cd {home}/GC/rundirs/gc_4x5_fullchem/
+> cd **~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/**
 
 > vi input.geos          # change run time and others
 
@@ -95,7 +95,7 @@ come to the directory you just created, here I show my setting:
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
 
 ### 8. build run environment
-do below in your run directory, here i.e. {home}/GC/rundirs/gc_4x5_fullchem/
+do below in your run directory, here i.e. **~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/**
 
 > cd build
 
@@ -120,7 +120,7 @@ now you will find '**gcclassic**' in your dir
 
 > qsub task.pbs
 
-see template in /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs
+see template in **/storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs**
 
 copy it to your own run dir and modify
 
