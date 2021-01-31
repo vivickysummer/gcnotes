@@ -1,5 +1,4 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-
 > By Bai Bin(1600013520@pku.edu.cn)
 
 > Last updated: 2021/02/01
@@ -21,8 +20,11 @@ git clone https://github.com/spack/spack.git
 
 ### 2. load SPACK
 > export SPACK_ROOT=/storage/coda1/p-pliu40/0/shared/GEOS-Chem/spack
+
 > source $SPACK_ROOT/share/spack/setup-env.sh
+
 or just
+
 > source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/spack/share/spack/setup-env.sh
 
 ### 3. download Packages Using 'spack install'
