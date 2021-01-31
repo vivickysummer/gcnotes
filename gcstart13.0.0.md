@@ -5,7 +5,6 @@ More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_wi
 
 
 \##==================================================================
-
 \# if you are in Pengfei Liu’s group at Gatech
 
 \# skip step 1-3 and start from step 4
