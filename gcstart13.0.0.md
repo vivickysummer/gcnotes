@@ -84,7 +84,7 @@ see more at http://wiki.seas.harvard.edu/geos-chem/index.php/Creating_run_direct
 ### 7. set GEOS-Chem task
 come to the directory you just created, here I show my setting:
 
-> cd **~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/**
+> cd ~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/
 
 > vi input.geos          # change run time and others
 
