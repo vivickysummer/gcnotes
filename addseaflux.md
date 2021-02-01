@@ -18,7 +18,7 @@ vi hcox_seaflux_mod.F90
 the basic description of seaflux computation is as below:
 
 > The oceanic flux is parameterized according to Liss and Slater, 1974:
->    F = K[g] * ( C[air] - H·C[water] )
+>    F = K<sub>g</sub> * ( C<sub>air</sub> - H·C<sub>water</sub> )
 > where F is the net flux, Kg is the exchange velocity, Cair and Cwater
 > are the air and aqueous concentrations, respectively, and H is the
 > dimensionless air over water Henry constant.
