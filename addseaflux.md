@@ -1,10 +1,77 @@
-## Add emissin of new species with sea-air flux in GEOS-Chem in Pace-Cluster
+## Add emissin of new species with sea-air flux in GEOS-Chem in Pace-Cluster-Use CH<sub>3</sub>I as example
 > By Bai Bin(*1600013520@pku.edu.cn*)\
 > Last updated: 2021/02/01
 
 For sake of convenience, 
 below I use **$HEMCO** as the root directory of HEMCO files,
 **$GCClassic** as the root directory of GEOS-Chem 13.0.0 source code.
+### 1. check your new HEMCO nc file used to input
+Assume my new CH3I ocean concentration map is stored as : $HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc
+need to determining if your netCDF file is COARDS-compliant, i.e. GEOS-Chem-accepted
+normaly, you can find a script **isCoards** in this path: $GCClassic/src/GEOS-Chem/NcdfUtil/perl/
+```
+ls ~/p-pliu40-0/GC/GCClassic.13.0.0/src/GEOS-Chem/NcdfUtil/perl/
+```
+To use this script, you need to load package **ncl** to activate **ncdump** command by:
+```
+source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/spack/share/spack/setup-env.sh
+spack load ncl
+```
+After that, you can check your nc file with this command:
+```
+$GCClassic/src/GEOS-Chem/NcdfUtil/perl/isCoards $HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc
+```
+the output is like this:
+```
+The following items adhere to the COARDS standard:
+---------------------------------------------------------------------------
+-> Dimension "lon" adheres to standard usage
+-> Dimension "lat" adheres to standard usage
+-> Dimension "time" adheres to standard usage
+-> lon(lon)
+-> lon is monotonically increasing
+-> lon:units = "degrees_east"
+-> lat(lat)
+-> lat is monotonically increasing
+-> lat:units = "degrees_north"
+-> time(time)
+-> time is monotonically increasing
+-> time:calendar = "proleptic_gregorian"
+-> time:units = "days since 2003-01-01 00:00:00"
+-> CH3I_OCEAN(time,lat,lon)
+-> CH3I_OCEAN:long_name = NaNf
+
+The following items DO NOT ADHERE to the COARDS standard:
+---------------------------------------------------------------------------
+-> lon:long_name (or lon:standard_name) is missing
+-> lat:long_name (or lat:standard_name) is missing
+-> time:long_name (or time:standard_name) is missing
+-> CH3I_OCEAN:long_name (or CH3I_OCEAN:standard_name) is missing
+-> CH3I_OCEAN:units is missing
+-> The "conventions" global attribute is missing
+-> The "history" global attribute is missing
+-> The "title" global attribute is missing
+
+The following optional items are RECOMMENDED:
+---------------------------------------------------------------------------
+-> Consider adding lon:axis ="X"
+-> Consider adding lat:axis = "Y"
+-> Consider adding time:axis = "T"
+-> Consider adding CH3I_OCEAN:missing_value
+-> Consider adding CH3I_OCEAN:add_offset
+-> Consider adding CH3I_OCEAN:scale_factor
+-> Consider adding the "format" global attribute
+-> Consider adding the "references" global attribute
+
+For more information how to fix non COARDS-compliant items, see:
+http://wiki.geos-chem.org/Preparing_data_files_for_use_with_HEMCO
+```
+you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python xaary, here is an example of python script:
+```
+abc
+```
+make sure your nc file is adhere to GEOS-Chem requirement, and go on next step
+
 ### 1. change fortran source code
 ```
 cd $GCClassic/src/HEMCO/src/Extensions
@@ -26,8 +93,8 @@ the basic description of seaflux computation is as below:
 > and H is the dimensionless air over water Henry constant. \
 > This module calculates the source and sink terms separately. The source is given as flux, the sink as deposition rate:
 
-> **source = K<sub>g</sub> x H x C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \
-> sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] **
+> source = K<sub>g</sub> x H x C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \
+> sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] 
 
 > The deposition rate is obtained by dividing the exchange velocity by the deposition height DEPHEIGHT, e.g. the height over which deposition occurs. \
 > This can be either the first grid box only, or the entire planetary boundary layer. \
@@ -35,7 +102,7 @@ the basic description of seaflux computation is as below:
 > K<sub>g</sub> is calculated following Johnson, 2010, which is largely based on the work of Nightingale et al., 2000a/b. \
 >  The salinity and seawater pH are currently set to constant global values  of 35 ppt and 8.0, respectively. 
 
-go to **LINE690** of **hcox_seaflux_mod.F90**, the code here is:
+go to **LINE 690** of **hcox_seaflux_mod.F90**, the code here is:
 ```
     ! ----------------------------------------------------------------------
     ! Get species IDs and settings
@@ -77,5 +144,7 @@ Copy a loop and change the **OcSpcName** and **OcDataName** and conresponding **
 Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
+
+## 2. check HEMCO file
 
 
