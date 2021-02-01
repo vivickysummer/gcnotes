@@ -218,4 +218,4 @@ then you need to change the extension setting below around **LINE 2396**
 **CH3I** is the exact species name in GEOS-Chem;\
 for more detailed information, see http://wiki.seas.harvard.edu/geos-chem/index.php/The_HEMCO_User%27s_Guide#Extension_switches.
 
-#### Once you've set your configuration file properly, you can start to use your new emission!!!
+**Once you've set your configuration file properly, you can start to use your new emission!!!**
