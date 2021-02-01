@@ -90,23 +90,23 @@ CH3I.attrs['Title'] = "COARDS/netCDF file containing ocean methyl iodide concent
 CH3I.to_netcdf('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.Examined.nc')
 ```
 make sure your nc file is adhere to GEOS-Chem requirement, and go on to next step.\
-for more information, go to http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data.
+for more information, see http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data.
 
 ### 2. check species information in GEOS-Chem
-there is a file called **species_database.yml** in path **$GCClassic/src/GEOS-Chem/run/GEOS**, which is used to store species information used in GEOS-Chem.
+there is a file **species_database.yml** in path **$GCClassic/src/GEOS-Chem/run/GEOS**, which is used to store species information used in GEOS-Chem.
 ```
 cd $GCClassic/src/GEOS-Chem/run/GEOS
 vi species_database.yml
 ```
 you can find the detailed explanation for this file in http://wiki.seas.harvard.edu/geos-chem/index.php/Guide_to_species_in_GEOS-Chem \
-since henry law constant is need for seaflux computation, if it's not prepared for your species, you need to add by your own. \
-Once the henry law constant for your species is deployed, go on to next step.
+since **henry law constant** is need for seaflux computation, if it's not prepared for your species, you need to add by your own. \
+Once the **henry law constant** for your species is deployed, go on to next step.
 ### 3. change fortran source code
 ```
 cd $GCClassic/src/HEMCO/src/Extensions
 ls
 ```
-this directory is for the code of **Extensions** controlling emission other than those in **Core** Extensions.\
+this directory is for the code of **Extensions** controlling emission other than those in **base** Extensions.\
 you can find **hcox_seaflux_mod.F90** which is in charge of the seaflux emission of several species now.
 ```
 vi hcox_seaflux_mod.F90
@@ -174,6 +174,46 @@ Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
 
-### 4.build and change HEMCO Configuration file
+### 4.compile 
+About how to run newest GCClassic.13.0.0, refer to https://github.com/baib-EAS/gcnotes/blob/main/gcstart13.0.0.md
+go to run directory:
+```
+cd ~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/
+cd build
+source ~/.bashrc
+source ~/.GC
+cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
+make -j
+make install
+cd ..
+```
+it would be quite quick if you have compile and build before, since only changed part need to be re-compiled.
+### 5. change HEMCO Configuration file
+```
+vi HEMCO_Config.rc
+```
+firstly, add your species in **LINE 129**, here I add CH3I
+```
+101     SeaFlux                : on    DMS/ACET/ALD2/MENO3/ETNO3/MOH/CH3I
+```
+then you need to change the extension setting below around **LINE 2396**
+```
+#==============================================================================
+# --- Seawater concentrations for oceanic emissions (Extension 101) ---
+#==============================================================================
+(((SeaFlux
+101 CH3I_SEAWATER  $ROOT/CH3I/v2021-01/MONTHLY.CH3I.$YYYYT00:00:00.000000000.nc   CH3I_OCEAN 2003-2018/1-12/1/0 C xy kg/m3  CH3I  -  1 1
+101 DMS_SEAWATER    $ROOT/DMS/v2015-07/DMS_lana.geos.1x1.nc                       DMS_OCEAN  1985/1-12/1/0 C xy kg/m3  DMS   -  1 1
+...
+)))SeaFlux
 
+```
+**101** is the unique number of seaflux extension;\
+**CH3I_SEAWATER** is the array name you defined in **hcox_seaflux_mod.F90**;\
+**$ROOT/CH3I/v2021-01/MONTHLY.CH3I.$YYYYT00:00:00.000000000.nc** is your nc file path and token is allowed;\
+**CH3I_OCEAN** is the variable name in you nc file;\
+**CH3I_OCEAN 2003-2018/1-12/1/0** means the time span and frequency of your nc file;\
+**CH3I** is the exact species name in GEOS-Chem;\
+for more detailed information, see http://wiki.seas.harvard.edu/geos-chem/index.php/The_HEMCO_User%27s_Guide#Extension_switches.
 
+Once you've set your configuration file properly, you can start to use your new emission!!!
