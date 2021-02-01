@@ -5,14 +5,14 @@
 For sake of convenience, 
 below I use **$HEMCO** as the root directory of HEMCO files,
 **$GCClassic** as the root directory of GEOS-Chem 13.0.0 source code.
-### 1. check your new HEMCO nc file used to input
+### 1. check your new HEMCO nc file input
 Assume my new CH3I ocean concentration map is stored as : **$HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc** \
 firstly I need to determining if your netCDF file is **COARDS-compliant**, i.e. GEOS-Chem-accepted\
-normaly, you can find a script **isCoards** in this path: **$GCClassic/src/GEOS-Chem/NcdfUtil/perl/**, which can be used to examine your nc file \
+A script **isCoards** in this path: **$GCClassic/src/GEOS-Chem/NcdfUtil/perl/** can be used to examine \
 ```
 ls ~/p-pliu40-0/GC/GCClassic.13.0.0/src/GEOS-Chem/NcdfUtil/perl/isCoards
 ```
-To use this script, you need to load package **ncl** to activate **ncdump** command by:
+To use this script, you need to load package **ncl** to activate **ncdump** command firstly by:
 ```
 source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/spack/share/spack/setup-env.sh
 spack load ncl
@@ -68,6 +68,7 @@ http://wiki.geos-chem.org/Preparing_data_files_for_use_with_HEMCO
 ```
 according to this, you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python **xaary**, here is an example of python script:
 ```
+import xarray as xr
 CH3I = xr.open_mfdataset('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.nc')
 CH3I.lat.attrs['units'] = 'degrees_north'
 CH3I.lat.attrs['standard_name'] = 'latitude'
@@ -91,7 +92,16 @@ CH3I.to_netcdf('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.Examined.nc'
 make sure your nc file is adhere to GEOS-Chem requirement, and go on to next step.\
 for more information, go to http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data.
 
-### 2. change fortran source code
+### 2. check species information in GEOS-Chem
+there is a file called **species_database.yml** in path **$GCClassic/src/GEOS-Chem/run/GEOS**, which is used to store species information used in GEOS-Chem.
+```
+cd $GCClassic/src/GEOS-Chem/run/GEOS
+vi species_database.yml
+```
+you can find the detailed explanation for this file in http://wiki.seas.harvard.edu/geos-chem/index.php/Guide_to_species_in_GEOS-Chem \
+since henry law constant is need for seaflux computation, if it's not prepared for your species, you need to add by your own. \
+Once the henry law constant for your species is deployed, go on to next step.
+### 3. change fortran source code
 ```
 cd $GCClassic/src/HEMCO/src/Extensions
 ls
@@ -164,6 +174,6 @@ Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
 
-## 2. check HEMCO file
+## 4 build and change HEMCO Configuration file
 
 
