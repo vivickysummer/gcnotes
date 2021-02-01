@@ -1,4 +1,6 @@
 ## An Environmental Variables Setting Templates for GEOS-Chem in Pace-Cluster
+> By Bai Bin(*1600013520@pku.edu.cn*)\
+> Last updated: 2021/02/01
 ```
 #==============================================================================
 # %%%%% clear existing environment variables %%%%%
