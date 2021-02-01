@@ -1,14 +1,12 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-> By *Bai Bin*(*1600013520@pku.edu.cn*)
+> By Bai Bin(*1600013520@pku.edu.cn*)
 
 > Last updated: 2021/02/01
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 ********************************************************************
-if you are in Pengfei Liu’s group at Gatech
-
-skip step 1-3 and start from step 4
-
+if you are in Pengfei Liu’s group at Gatech\
+skip step 1-3 and start from step 4\
 spack is already installed!!!
 ********************************************************************
 ### 1. download SPACK in home directory
@@ -113,8 +111,8 @@ whoami
 ```
 ### 11. other useful commands
 ```
-qdel <job id> #kill task
-pace-check-queue -c inferno  #check nodes state
-pace-check-queue -s inferno  #check nodes property
-checkjob <job id>
+qdel <job id>                # kill task
+pace-check-queue -c inferno  # check nodes state
+pace-check-queue -s inferno  # check nodes property
+checkjob <job id>            # check job status
 ```
