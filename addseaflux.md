@@ -214,8 +214,8 @@ then you need to change the extension setting below around **LINE 2396**
 **CH3I_SEAWATER** is the array name you defined in **hcox_seaflux_mod.F90**;\
 **$ROOT/CH3I/v2021-01/MONTHLY.CH3I.$YYYYT00:00:00.000000000.nc** is your nc file path and token is allowed;\
 **CH3I_OCEAN** is the variable name in you nc file;\
-**CH3I_OCEAN 2003-2018/1-12/1/0** means the time span and frequency of your nc file;\
+**2003-2018/1-12/1/0** means the time span and resolution in your nc file;\
 **CH3I** is the exact species name in GEOS-Chem;\
 for more detailed information, see http://wiki.seas.harvard.edu/geos-chem/index.php/The_HEMCO_User%27s_Guide#Extension_switches.
 
-Once you've set your configuration file properly, you can start to use your new emission!!!
+#### Once you've set your configuration file properly, you can start to use your new emission!!!
