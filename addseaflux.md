@@ -26,8 +26,8 @@ the basic description of seaflux computation is as below:
 > and H is the dimensionless air over water Henry constant. \
 > This module calculates the source and sink terms separately. The source is given as flux, the sink as deposition rate:
 
-> **source = K<sub>g</sub> x H x C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \**
-> **sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] **
+> **source = K<sub>g</sub> x H x C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \
+> sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] **
 
 > The deposition rate is obtained by dividing the exchange velocity by the deposition height DEPHEIGHT, e.g. the height over which deposition occurs. \
 > This can be either the first grid box only, or the entire planetary boundary layer. \
