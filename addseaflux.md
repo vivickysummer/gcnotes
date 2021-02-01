@@ -1,4 +1,4 @@
-## Add emissin of new species with sea-air flux in GEOS-Chem-Use CH<sub>3</sub>I as example
+## Add emission of a new species with sea-air flux in GEOS-Chem-Use CH<sub>3</sub>I as example
 > By Bai Bin(*1600013520@pku.edu.cn*)\
 > Last updated: 2021/02/01
 
