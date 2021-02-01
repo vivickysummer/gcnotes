@@ -5,7 +5,7 @@
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 
-##==================================================================
+********************************************************************
 
 \# if you are in Pengfei Liu’s group at Gatech
 
@@ -13,7 +13,7 @@ More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_wi
 
 \# spack is already installed!!!
 
-##==================================================================
+********************************************************************
 
 ### 1. download SPACK in home directory
 git clone https://github.com/spack/spack.git
