@@ -1,4 +1,4 @@
-## Add emissin of new species with sea-air flux in GEOS-Chem in Pace-Cluster-Use CH<sub>3</sub>I as example
+## Add emissin of new species with sea-air flux in GEOS-Chem-Use CH<sub>3</sub>I as example
 > By Bai Bin(*1600013520@pku.edu.cn*)\
 > Last updated: 2021/02/01
 
@@ -174,6 +174,6 @@ Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
 
-## 4 build and change HEMCO Configuration file
+### 4.build and change HEMCO Configuration file
 
 
