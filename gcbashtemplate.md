@@ -1,4 +1,6 @@
 ## A Bashrc Template in Pace-Cluster
+> By Bai Bin(*1600013520@pku.edu.cn*)\
+> Last updated: 2021/02/01
 ```
 # Source global definitions
 if [ -f /etc/bashrc ]; then
