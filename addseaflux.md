@@ -29,4 +29,49 @@ the basic description of seaflux computation is as below:
 > This can be either the first grid box only, or the entire planetary boundary layer. \
 > The HEMCO option 'PBL_DRYDEP' determines which option is being used. \
 > K<sub>g</sub> is calculated following Johnson, 2010, which is largely based on the work of Nightingale et al., 2000a/b. \
->  The salinity and seawater pH are currently set to constant global values  of 35 ppt and 8.0, respectively. \
+>  The salinity and seawater pH are currently set to constant global values  of 35 ppt and 8.0, respectively. 
+
+go to **LINE690** of **hcox_seaflux_mod.F90**, the code here is:
+```
+    ! ----------------------------------------------------------------------
+    ! Get species IDs and settings
+    ! ----------------------------------------------------------------------
+
+    ! # of species for which air-sea exchange will be calculated
+    Inst%nOcSpc = 7  ! updated to include MENO3, ETNO3, MOH
+
+    ! Initialize vector w/ species information
+    ALLOCATE ( Inst%OcSpecs(Inst%nOcSpc) )
+    DO I = 1, Inst%nOcSpc
+       Inst%OcSpecs(I)%HcoID      = -1
+       Inst%OcSpecs(I)%OcSpcName  = ''
+       Inst%OcSpecs(I)%OcDataName = ''
+       Inst%OcSpecs(I)%LiqVol     = 0d0
+       Inst%OcSpecs(I)%SCWPAR     = 1
+    ENDDO
+
+    ! Counter
+    I = 0
+
+    ! ----------------------------------------------------------------------
+    ! CH3I:
+    ! ----------------------------------------------------------------------
+
+    I = I + 1
+    IF ( I > Inst%nOcSpc ) THEN
+       CALL HCO_ERROR ( HcoState%Config%Err, ERR, RC )
+       RETURN
+    ENDIF
+
+    Inst%OcSpecs(I)%OcSpcName  = 'CH3I'
+    Inst%OcSpecs(I)%OcDataName = 'CH3I_SEAWATER'
+    Inst%OcSpecs(I)%LiqVol     = 1d0*7d0 + 3d0*7d0 + 1d0*38.5d0 ! Johnson, 2010
+    Inst%OcSpecs(I)%SCWPAR     = 1 ! Schmidt number following Johnson, 2010
+
+```
+Copy a loop and change the **OcSpcName** and **OcDataName** and conresponding **LiqVol** and **SCWPAR** and add **Inst%nOcSpc** by 1. \
+Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
+**OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
+refer to the description in source code file about **LiqVol** and **SCWPAR**. \
+
+
