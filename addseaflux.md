@@ -6,9 +6,9 @@ For sake of convenience,
 below I use **$HEMCO** as the root directory of HEMCO files,
 **$GCClassic** as the root directory of GEOS-Chem 13.0.0 source code.
 ### 1. check your new HEMCO nc file input
-Assume my new CH3I ocean concentration map is stored as : **$HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc** \
-firstly I need to determining if your netCDF file is **COARDS-compliant**, i.e. GEOS-Chem-accepted\
-A script **isCoards** in this path: **$GCClassic/src/GEOS-Chem/NcdfUtil/perl/** can be used to examine \
+Assume my new CH3I ocean concentration map is stored as : **$HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc**, \
+firstly I need to determining if your netCDF file is **COARDS-compliant**, i.e. GEOS-Chem-accepted, \
+A script **isCoards** in this path: **$GCClassic/src/GEOS-Chem/NcdfUtil/perl/** can be used to examine.
 ```
 ls ~/p-pliu40-0/GC/GCClassic.13.0.0/src/GEOS-Chem/NcdfUtil/perl/isCoards
 ```
@@ -93,7 +93,7 @@ make sure your nc file is adhere to GEOS-Chem requirement, and go on to next ste
 for more information, see http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data.
 
 ### 2. check species information in GEOS-Chem
-there is a file **species_database.yml** in path **$GCClassic/src/GEOS-Chem/run/GEOS**, which is used to store species information used in GEOS-Chem.
+There is a file **species_database.yml** in path **$GCClassic/src/GEOS-Chem/run/GEOS**, which is used to store species information used in GEOS-Chem.
 ```
 cd $GCClassic/src/GEOS-Chem/run/GEOS
 vi species_database.yml
@@ -129,7 +129,7 @@ the basic description of seaflux computation is as below:
 > This can be either the first grid box only, or the entire planetary boundary layer. \
 > The HEMCO option 'PBL_DRYDEP' determines which option is being used. \
 > K<sub>g</sub> is calculated following Johnson, 2010, which is largely based on the work of Nightingale et al., 2000a/b. \
->  The salinity and seawater pH are currently set to constant global values  of 35 ppt and 8.0, respectively. 
+> The salinity and seawater pH are currently set to constant global values  of 35 ppt and 8.0, respectively. 
 
 go to **LINE 690** of **hcox_seaflux_mod.F90**, the code here is:
 ```
@@ -152,7 +152,8 @@ go to **LINE 690** of **hcox_seaflux_mod.F90**, the code here is:
 
     ! Counter
     I = 0
-
+```
+```
     ! ----------------------------------------------------------------------
     ! CH3I:
     ! ----------------------------------------------------------------------
@@ -169,14 +170,15 @@ go to **LINE 690** of **hcox_seaflux_mod.F90**, the code here is:
     Inst%OcSpecs(I)%SCWPAR     = 1 ! Schmidt number following Johnson, 2010
 
 ```
-Copy a loop and change the **OcSpcName** and **OcDataName** and conresponding **LiqVol** and **SCWPAR** and add **Inst%nOcSpc** by 1. \
-Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
+Add **Inst%nOcSpc** by 1 in the first part and \
+duplicate a loop, i.e. the second part, and change the **OcSpcName** and **OcDataName** and conresponding **LiqVol** and **SCWPAR**.
+Here, **OcSpcName** should be exactly the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
 
 ### 4.compile 
-About how to run newest GCClassic.13.0.0, refer to https://github.com/baib-EAS/gcnotes/blob/main/gcstart13.0.0.md
-go to run directory:
+About how to run newest GCClassic.13.0.0, refer to https://github.com/baib-EAS/gcnotes/blob/main/gcstart13.0.0.md.
+go to run directory and compile and build:
 ```
 cd ~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/
 cd build
@@ -187,12 +189,12 @@ make -j
 make install
 cd ..
 ```
-it would be quite quick if you have compile and build before, since only changed part need to be re-compiled.
+it would be quite quick if you have compile and build before, since only changed codes need to be re-compiled.
 ### 5. change HEMCO Configuration file
 ```
 vi HEMCO_Config.rc
 ```
-firstly, add your species in **LINE 129**, here I add CH3I
+firstly, add your species in **LINE 129**, here I add **CH3I**
 ```
 101     SeaFlux                : on    DMS/ACET/ALD2/MENO3/ETNO3/MOH/CH3I
 ```
