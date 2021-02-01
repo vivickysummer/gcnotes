@@ -54,11 +54,11 @@ you may add '**alias gsu="git submodule update --init --recursive"**' in **~/.ba
 cd run/
 ./createRunDir.sh
 ```
-need to type ExtData dir for first time:
+need to type ExtData directory for first time:
 ```
 /storage/coda1/p-pliu40/0/shared/GEOS-Chem/data/ExtData
 ```
-and finish your options and set dir to be copied into\
+finish your options and set directory to be copied into\
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/Creating_run_directories_for_GEOS-Chem_13.0.0_and_later
 
 ### 7. set GEOS-Chem task
