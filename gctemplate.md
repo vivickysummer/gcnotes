@@ -39,7 +39,6 @@ spack load gdbm%intel@19.0.5.281
 spack load gmake%intel@19.0.5.281
 spack load hdf5%intel@19.0.5.281
 spack load perl%intel@19.0.5.281
-
 spack load flex%intel@19.0.5.281
 spack load openmpi%intel@19.0.5.281
 spack load netcdf-c%intel@19.0.5.281
