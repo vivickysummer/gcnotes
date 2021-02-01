@@ -66,7 +66,7 @@ The following optional items are RECOMMENDED:
 For more information how to fix non COARDS-compliant items, see:
 http://wiki.geos-chem.org/Preparing_data_files_for_use_with_HEMCO
 ```
-you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python **xaary**, here is an example of python script:
+according to this, you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python **xaary**, here is an example of python script:
 ```
 CH3I = xr.open_mfdataset('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.nc')
 CH3I.lat.attrs['units'] = 'degrees_north'
@@ -89,7 +89,7 @@ CH3I.attrs['Title'] = "COARDS/netCDF file containing ocean methyl iodide concent
 CH3I.to_netcdf('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.Examined.nc')
 ```
 make sure your nc file is adhere to GEOS-Chem requirement, and go on to next step.\
-for more information, go to http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data#Determining_if_a_netCDF_file_is_COARDS-compliant
+for more information, go to http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data.
 
 ### 2. change fortran source code
 ```
