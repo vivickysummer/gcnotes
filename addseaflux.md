@@ -177,7 +177,7 @@ Here, **OcSpcName** should be exactly the species name defined in GEOS-Chem, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
 
 ### 4.compile 
-About how to run newest GCClassic.13.0.0, refer to https://github.com/baib-EAS/gcnotes/blob/main/gcstart13.0.0.md.
+About how to run newest GCClassic.13.0.0, refer to https://github.com/baib-EAS/gcnotes/blob/main/gcstart13.0.0.md. \
 go to run directory and compile and build:
 ```
 cd ~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/
