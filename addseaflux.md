@@ -17,14 +17,14 @@ vi hcox_seaflux_mod.F90
 ```
 the basic description of seaflux computation is as below:
 > The oceanic flux is parameterized according to Liss and Slater, 1974:\
->       F = K<sub>g</sub> * ( C<sub>air</sub> - H·C<sub>water</sub> )\
+>       **F = K<sub>g</sub> * ( C<sub>air</sub> - H·C<sub>water</sub> )**\
 > where F is the net flux, \
 > K<sub>g</sub> is the exchange velocity, \
 > C<sub>air</sub> and C<sub>water</sub> are the air and aqueous concentrations, respectively, \
 > and H is the dimensionless air over water Henry constant. \
 > This module calculates the source and sink terms separately. The source is given as flux, the sink as deposition rate: \
->       source = K<sub>g</sub> * H * C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \
->       sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] \
+>       **source = K<sub>g</sub> * H * C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] **\
+>       **sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] **\
 > The deposition rate is obtained by dividing the exchange velocity by the deposition height DEPHEIGHT, e.g. the height over which deposition occurs. \
 > This can be either the first grid box only, or the entire planetary boundary layer. \
 > The HEMCO option 'PBL_DRYDEP' determines which option is being used. \
@@ -72,6 +72,6 @@ go to **LINE690** of **hcox_seaflux_mod.F90**, the code here is:
 Copy a loop and change the **OcSpcName** and **OcDataName** and conresponding **LiqVol** and **SCWPAR** and add **Inst%nOcSpc** by 1. \
 Here, **OcSpcName** should exactly be the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
-refer to the description in source code file about **LiqVol** and **SCWPAR**. \
+refer to the description in source code file about **LiqVol** and **SCWPAR**. 
 
 
