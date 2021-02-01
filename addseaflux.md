@@ -6,11 +6,11 @@ For sake of convenience,
 below I use **$HEMCO** as the root directory of HEMCO files,
 **$GCClassic** as the root directory of GEOS-Chem 13.0.0 source code.
 ### 1. check your new HEMCO nc file used to input
-Assume my new CH3I ocean concentration map is stored as : $HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc
-need to determining if your netCDF file is COARDS-compliant, i.e. GEOS-Chem-accepted
-normaly, you can find a script **isCoards** in this path: $GCClassic/src/GEOS-Chem/NcdfUtil/perl/
+Assume my new CH3I ocean concentration map is stored as : **$HEMCO/CH3I/v2021-01/MONTHLY.OCEAN.CH3I.$YYYY.nc** \
+firstly I need to determining if your netCDF file is **COARDS-compliant**, i.e. GEOS-Chem-accepted\
+normaly, you can find a script **isCoards** in this path: **$GCClassic/src/GEOS-Chem/NcdfUtil/perl/**, which can be used to examine your nc file \
 ```
-ls ~/p-pliu40-0/GC/GCClassic.13.0.0/src/GEOS-Chem/NcdfUtil/perl/
+ls ~/p-pliu40-0/GC/GCClassic.13.0.0/src/GEOS-Chem/NcdfUtil/perl/isCoards
 ```
 To use this script, you need to load package **ncl** to activate **ncdump** command by:
 ```
@@ -66,11 +66,29 @@ The following optional items are RECOMMENDED:
 For more information how to fix non COARDS-compliant items, see:
 http://wiki.geos-chem.org/Preparing_data_files_for_use_with_HEMCO
 ```
-you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python xaary, here is an example of python script:
+you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python **xaary**, here is an example of python script:
 ```
-abc
+    CH3I = xr.open_mfdataset('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.nc')
+    CH3I.lat.attrs['units'] = 'degrees_north'
+    CH3I.lat.attrs['standard_name'] = 'latitude'
+    CH3I.lat.attrs['long_name'] = 'Latitude'
+    CH3I.lat.attrs['axis'] = 'X'
+    CH3I.lon.attrs['units'] = 'degrees_east'
+    CH3I.lon.attrs['standard_name'] = 'longitude'
+    CH3I.lon.attrs['long_name'] = 'Longitude'
+    CH3I.lon.attrs['axis'] = 'Y'
+    CH3I.time.attrs['standard_name'] = 'time'
+    CH3I.time.attrs['long_name'] = 'Time'
+    CH3I.time.attrs['calender'] = 'standard'
+    CH3I.time.attrs['axis'] = 'T'
+    CH3I.CH3I_OCEAN.attrs['units'] = 'kg/m3'
+    CH3I.CH3I_OCEAN.attrs['long_name'] = 'global ocean methyl iodide concentration'
+    CH3I.attrs['Conventions'] = "COARDS"
+    CH3I.attrs['history'] = "Mon Jan 01 00:00:00 2021 UTC"
+    CH3I.attrs['Title'] = "COARDS/netCDF file containing ocean methyl iodide concentration data"
+    CH3I.to_netcdf('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.Examined.nc')
 ```
-make sure your nc file is adhere to GEOS-Chem requirement, and go on next step
+make sure your nc file is adhere to GEOS-Chem requirement, and go on to next step
 
 ### 1. change fortran source code
 ```
