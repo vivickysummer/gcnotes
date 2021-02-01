@@ -5,9 +5,9 @@
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 ********************************************************************
-      if you are in Pengfei Liu’s group at Gatech\
-      skip step 1-3 and start from step 4\
-      spack is already installed!!!
+if you are in Pengfei Liu’s group at Gatech\
+skip step 1-3 and start from step 4\
+spack is already installed!!!
 ********************************************************************
 ### 1. download SPACK in home directory
 ```
@@ -36,8 +36,8 @@ time spack install ncl %intel@19.0.5.281
 ```
 see more at  https://github.com/geoschem/geos-chem-cloud/issues/35
 ********************************************************************
-      if you are in Pengfei Liu’s group at Gatech\
-      just start from here (spack is already installed)!!
+if you are in Pengfei Liu’s group at Gatech\
+just start from here (spack is already installed)!!
 ********************************************************************
 ### 4. download Source Code in your GEOS-Chem directory ('GC' for me)
 ```
