@@ -18,7 +18,7 @@ vi hcox_seaflux_mod.F90
 the basic description of seaflux computation is as below:
 > The oceanic flux is parameterized according to Liss and Slater, 1974:
 
-> F = K<sub>g</sub> x ( C<sub>air</sub> - H·C<sub>water</sub> )
+> **F = K<sub>g</sub> x ( C<sub>air</sub> - H·C<sub>water</sub> )**
 
 > where F is the net flux, \
 > K<sub>g</sub> is the exchange velocity, \
@@ -26,8 +26,8 @@ the basic description of seaflux computation is as below:
 > and H is the dimensionless air over water Henry constant. \
 > This module calculates the source and sink terms separately. The source is given as flux, the sink as deposition rate:
 
-> source = K<sub>g</sub> x H x C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \
-> sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] 
+> **source = K<sub>g</sub> x H x C<sub>water</sub>     [kg m<sup>-2</sup> s<sup>-1</sup>] \**
+> **sink   = K<sub>g</sub> / DEPHEIGHT      [s<sup>-1</sup>] **
 
 > The deposition rate is obtained by dividing the exchange velocity by the deposition height DEPHEIGHT, e.g. the height over which deposition occurs. \
 > This can be either the first grid box only, or the entire planetary boundary layer. \
