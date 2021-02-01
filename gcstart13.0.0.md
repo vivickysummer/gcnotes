@@ -1,8 +1,6 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-> By Bai Bin(*1600013520@pku.edu.cn*)
-
-> Last updated: 2021/02/01
-
+> By Bai Bin(*1600013520@pku.edu.cn*)\
+> Last updated: 2021/02/01\
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 ********************************************************************
 if you are in Pengfei Liu’s group at Gatech\
@@ -34,7 +32,7 @@ spack load texinfo
 time spack install cgbd %intel@19.0.5.281
 time spack install ncl %intel@19.0.5.281
 ```
-see more at  https://github.com/geoschem/geos-chem-cloud/issues/35
+see more at  https://github.com/geoschem/geos-chem-cloud/issues/35\
 ********************************************************************
 if you are in Pengfei Liu’s group at Gatech\
 just start from here (spack is already installed)!!
@@ -59,8 +57,7 @@ need to type ExtData dir for first time:
 ```
 /storage/coda1/p-pliu40/0/shared/GEOS-Chem/data/ExtData
 ```
-and finish your options and set dir to be copied into
-
+and finish your options and set dir to be copied into\
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/Creating_run_directories_for_GEOS-Chem_13.0.0_and_later
 
 ### 7. set GEOS-Chem task
@@ -78,11 +75,13 @@ do below in your run directory, here i.e. **~/p-pliu40-0/GC/rundirs/gc_4x5_fullc
 cd build
 source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.bashrc 
 ```
-copy it to your own home dir so you can just **source ~/.bashrc**
+copy it to your own home dir so you can just **source ~/.bashrc**\
+you can find a template as **gcbashtemplate.md** in this git dir
 ```
 source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.GC 
 ```
-copy it to your own home dir so you can just **source ~/.GC**
+copy it to your own home dir so you can just **source ~/.GC**\
+you can find a template as **gctemplate.md** in this git dir
 ```
 cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 make -j
@@ -95,11 +94,9 @@ now you will find '**gcclassic**' in your dir
 ```
 qsub task.pbs
 ```
-see template in **/storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs**
-
+see template in **/storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs**\
+or you can find it as **pbstemplate.md** in this git dir\
 copy it to your own run dir and modify
-
-
 ### 10. check your task state
 ```
 qstat -u <username>
