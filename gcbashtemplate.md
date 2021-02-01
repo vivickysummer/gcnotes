@@ -1,3 +1,4 @@
+## A Bashrc Template in Pace-Cluster
 ```
 # Source global definitions
 if [ -f /etc/bashrc ]; then
