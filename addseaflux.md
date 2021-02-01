@@ -171,7 +171,7 @@ go to **LINE 690** of **hcox_seaflux_mod.F90**, the code here is:
 
 ```
 Add **Inst%nOcSpc** by 1 in the first part and \
-duplicate a loop, i.e. the second part, and change the **OcSpcName** and **OcDataName** and conresponding **LiqVol** and **SCWPAR**.
+duplicate a loop, i.e. the second part, and change the **OcSpcName** and **OcDataName** and conresponding **LiqVol** and **SCWPAR**.\
 Here, **OcSpcName** should be exactly the species name defined in GEOS-Chem, \
 **OcDataName** is the array used to pass data, no restriction yet better to be self-explained, \
 refer to the description in source code file about **LiqVol** and **SCWPAR**. 
