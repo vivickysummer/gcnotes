@@ -77,12 +77,12 @@ cd build
 source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.bashrc 
 ```
 copy it to your own home dir so you can just **source ~/.bashrc**\
-you can find a template as **gcbashtemplate.md** in this git dir
+you can also find a template as **gcbashtemplate.md** in this git directory
 ```
 source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.GC 
 ```
 copy it to your own home dir so you can just **source ~/.GC**\
-you can find a template as **gctemplate.md** in this git dir
+you can also find a template as **gctemplate.md** in this git directory
 ```
 cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 make -j
