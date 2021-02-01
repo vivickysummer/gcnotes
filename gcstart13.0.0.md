@@ -96,8 +96,8 @@ now you will find '**gcclassic**' in your dir
 qsub task.pbs
 ```
 see template in **/storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs**\
-or you can find it as **pbstemplate.md** in this git dir\
-copy it to your own run dir and modify
+or you can find it as **pbstemplate.md** in this git directory\
+copy it to your own run directory and modify
 ### 10. check your task state
 ```
 qstat -u <username>
