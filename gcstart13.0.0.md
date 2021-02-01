@@ -72,7 +72,7 @@ come to the directory you just created, here I show my setting:
 cd ~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/
 vi input.geos          # change run time and others
 vi HEMCO.Config.rc     # shut-down several offline emissions and use online extensions
-vi HISTORY.rc          #choose preferred output
+vi HISTORY.rc          # choose preferred output
 ```
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
 ### 8. build run environment
@@ -85,7 +85,7 @@ copy it to your own home dir so you can just **source ~/.bashrc**
 ```
 source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.GC 
 ```
-copy it to your own dir so you can just **source ~/.GC**
+copy it to your own home dir so you can just **source ~/.GC**
 ```
 cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 make -j
