@@ -68,29 +68,30 @@ http://wiki.geos-chem.org/Preparing_data_files_for_use_with_HEMCO
 ```
 you can change the attribute which *DO NOT ADHERE to the COARDS standard* of your nc file using Python **xaary**, here is an example of python script:
 ```
-    CH3I = xr.open_mfdataset('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.nc')
-    CH3I.lat.attrs['units'] = 'degrees_north'
-    CH3I.lat.attrs['standard_name'] = 'latitude'
-    CH3I.lat.attrs['long_name'] = 'Latitude'
-    CH3I.lat.attrs['axis'] = 'X'
-    CH3I.lon.attrs['units'] = 'degrees_east'
-    CH3I.lon.attrs['standard_name'] = 'longitude'
-    CH3I.lon.attrs['long_name'] = 'Longitude'
-    CH3I.lon.attrs['axis'] = 'Y'
-    CH3I.time.attrs['standard_name'] = 'time'
-    CH3I.time.attrs['long_name'] = 'Time'
-    CH3I.time.attrs['calender'] = 'standard'
-    CH3I.time.attrs['axis'] = 'T'
-    CH3I.CH3I_OCEAN.attrs['units'] = 'kg/m3'
-    CH3I.CH3I_OCEAN.attrs['long_name'] = 'global ocean methyl iodide concentration'
-    CH3I.attrs['Conventions'] = "COARDS"
-    CH3I.attrs['history'] = "Mon Jan 01 00:00:00 2021 UTC"
-    CH3I.attrs['Title'] = "COARDS/netCDF file containing ocean methyl iodide concentration data"
-    CH3I.to_netcdf('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.Examined.nc')
+CH3I = xr.open_mfdataset('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.nc')
+CH3I.lat.attrs['units'] = 'degrees_north'
+CH3I.lat.attrs['standard_name'] = 'latitude'
+CH3I.lat.attrs['long_name'] = 'Latitude'
+CH3I.lat.attrs['axis'] = 'X'
+CH3I.lon.attrs['units'] = 'degrees_east'
+CH3I.lon.attrs['standard_name'] = 'longitude'
+CH3I.lon.attrs['long_name'] = 'Longitude'
+CH3I.lon.attrs['axis'] = 'Y'
+CH3I.time.attrs['standard_name'] = 'time'
+CH3I.time.attrs['long_name'] = 'Time'
+CH3I.time.attrs['calender'] = 'standard'
+CH3I.time.attrs['axis'] = 'T'
+CH3I.CH3I_OCEAN.attrs['units'] = 'kg/m3'
+CH3I.CH3I_OCEAN.attrs['long_name'] = 'global ocean methyl iodide concentration'
+CH3I.attrs['Conventions'] = "COARDS"
+CH3I.attrs['history'] = "Mon Jan 01 00:00:00 2021 UTC"
+CH3I.attrs['Title'] = "COARDS/netCDF file containing ocean methyl iodide concentration data"
+CH3I.to_netcdf('$HEMCO/CH3I/monthly/v202101/MONTHLY.OCEAN.CH3I.2010.Examined.nc')
 ```
-make sure your nc file is adhere to GEOS-Chem requirement, and go on to next step
+make sure your nc file is adhere to GEOS-Chem requirement, and go on to next step.\
+for more information, go to http://wiki.seas.harvard.edu/geos-chem/index.php/The_COARDS_netCDF_conventions_for_earth_science_data#Determining_if_a_netCDF_file_is_COARDS-compliant
 
-### 1. change fortran source code
+### 2. change fortran source code
 ```
 cd $GCClassic/src/HEMCO/src/Extensions
 ls
