@@ -101,7 +101,7 @@ vi species_database.yml
 you can find the detailed explanation for this file in http://wiki.seas.harvard.edu/geos-chem/index.php/Guide_to_species_in_GEOS-Chem \
 since **henry law constant** is need for seaflux computation, if it's not prepared for your species, you need to add by your own. \
 Once the **henry law constant** for your species is deployed, go on to next step.
-### 3. change fortran source code
+### 3. change fortran source code in HEMCO
 ```
 cd $GCClassic/src/HEMCO/src/Extensions
 ls
