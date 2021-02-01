@@ -111,5 +111,5 @@ whoami
 qdel <job id>                # kill task
 pace-check-queue -c inferno  # check nodes state
 pace-check-queue -s inferno  # check nodes property
-checkjob <job id>            # check job status
+checkjob <job id>            # check job problem
 ```
