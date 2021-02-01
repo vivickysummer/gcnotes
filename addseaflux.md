@@ -11,7 +11,7 @@ cd $GCClassic/src/HEMCO/src/Extensions
 ls
 ```
 this directory is for the code of **Extensions** controlling emission other than those in **Core** Extensions.\
-you can find **hcox_seasalt_mod.F90** which is in charge of the seaflux emission of several species now.
+you can find **hcox_seaflux_mod.F90** which is in charge of the seaflux emission of several species now.
 ```
-vi hcox_seasalt_mod.F90
+vi hcox_seaflux_mod.F90
 ```
