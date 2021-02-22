@@ -131,7 +131,7 @@ export F77=ifort
 export F90=ifort
 
 # Environment variables for the netCDF C-language interface
-export NETCDF_HOME=$(spack location -i netcdf-c@4.7.4%intel@19.0.5.281)
+export NETCDF_HOME=$(spack location -i netcdf-c@4.7.3%intel@18.0.3)
 export NETCDF_BIN=$NETCDF_HOME/bin
 export NETCDF_INCLUDE=$NETCDF_HOME/include
 export NETCDF_LIB=$NETCDF_HOME/lib
@@ -140,7 +140,7 @@ export GC_INCLUDE=$NETCDF_INCLUDE
 export GC_LIB=$NETCDF_LIB
 
 # Environment variables for the netCDF Fortran-languge interface
-export NETCDF_FORTRAN_HOME=$(spack location -i netcdf-fortran@4.5.3%intel@19.0.5.281)
+export NETCDF_FORTRAN_HOME=$(spack location -i netcdf-fortran@4.5.2%intel@18.0.3)
 export NETCDF_FORTRAN_HOME_BIN=$NETCDF_FORTRAN_HOME/bin
 export NETCDF_FORTRAN_HOME_INCLUDE=$NETCDF_FORTRAN_HOME/include
 export NETCDF_FORTRAN_HOME_LIB=$NETCDF_FORTRAN_HOME/lib
@@ -184,6 +184,7 @@ cd /your/run/directory/
 
 time ./gcclassic >> GC.log
 
+exit 0
 ```
 ### 7. check your task state
 ```
