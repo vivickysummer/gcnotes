@@ -1,6 +1,6 @@
 ## Run GCClassic.13.0.0 in Pace-Cluster
-> By Bai Bin(*1600013520@pku.edu.cn*)\
-> Last updated: 2021/02/2
+> By Bai Bin(*baib@mail.sustech.edu.cn*)\
+> Last updated: 2021/02/22
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
 
