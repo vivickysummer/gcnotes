@@ -82,30 +82,147 @@ see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configura
 do below in your run directory, here i.e. **~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/**
 ```
 cd build
-source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.bashrc 
+source ~/.bashrc 
+source ~/.GC
 ```
-copy it to your own home dir so you can just **source ~/.bashrc**\
-you can also find a template as **gcbashtemplate.md** in this git directory
+a bashrc template is here, copy it to your own home dir
 ```
-source /storage/coda1/p-pliu40/0/shared/GEOS-Chem/.GC 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+alias la='ls -a'
+alias ll='ls -lhp'
+alias cp='cp -pr'
+alias rm='rm -i'
+
+# Max out machine limits
+ulimit -t unlimited              # cputime
+ulimit -f unlimited              # filesize
+ulimit -d unlimited              # datasize
+ulimit -s unlimited              # stacksize
+ulimit -c unlimited              # coredumpsize
+ulimit -m unlimited              # memoryuse
+ulimit -v unlimited              # vmemoryuse
+ulimit -l unlimited              # memorylocked
 ```
-copy it to your own home dir so you can just **source ~/.GC**\
-you can also find a template as **gctemplate.md** in this git directory
+a gc template is here, copy it to your own home dir
+```
+# .bashrc
+#==============================================================================
+# %%%%% clear existing environment variables %%%%%
+#==============================================================================
+unset PERL_HOME
+unset CC
+unset CXX
+unset FC
+unset F77
+unset F90
+unset NETCDF_BIN
+unset NETCDF_HOME
+unset NETCDF_INCLUDE
+unset NETCDF_LIB
+unset NETCDF_FORTRAN_BIN
+unset NETCDF_FORTRAN_HOME
+unset NETCDF_FORTRAN_INCLUDE
+unset NETCDF_FORTRAN_LIB
+unset GC_BIN
+unset GC_INCLUDE
+unset GC_LIB
+unset GC_F_BIN
+unset GC_F_INCLUDE
+unset GC_F_LIB
+unset OMP_NUM_THREADS
+unset OMP_STACKSIZE
+
+##=============================================================================
+# Load spack
+export SPACK_ROOT=/storage/coda1/p-pliu40/0/shared/GEOS-Chem/spack
+source $SPACK_ROOT/share/spack/setup-env.sh
+
+##==============================================================================
+module purge
+module load intel/19.0.5
+echo "Spack load modules for compiler intel@19.0.5.281..."
+spack load cgdb%intel@19.0.5.281
+spack load gdbm%intel@19.0.5.281
+spack load gmake%intel@19.0.5.281
+spack load hdf5%intel@19.0.5.281
+spack load perl%intel@19.0.5.281
+spack load flex%intel@19.0.5.281
+spack load openmpi%intel@19.0.5.281
+spack load netcdf-c%intel@19.0.5.281
+spack load netcdf-fortran%intel@19.0.5.281
+spack load ncurses%intel@19.0.5.281
+spack load ncview%intel@19.0.5.281
+spack load cmake%intel@19.0.5.281
+
+##=============================================================================
+# define environment variables for compilers
+##=============================================================================
+export FC=ifort
+export CC=icc
+export CXX=icpc
+export F77=ifort
+export F90=ifort
+
+# Environment variables for the netCDF C-language interface
+export NETCDF_HOME=$(spack location -i netcdf-c@4.7.4%intel@19.0.5.281)
+export NETCDF_BIN=$NETCDF_HOME/bin
+export NETCDF_INCLUDE=$NETCDF_HOME/include
+export NETCDF_LIB=$NETCDF_HOME/lib
+export GC_BIN=$NETCDF_BIN
+export GC_INCLUDE=$NETCDF_INCLUDE
+export GC_LIB=$NETCDF_LIB
+
+# Environment variables for the netCDF Fortran-languge interface
+export NETCDF_FORTRAN_HOME=$(spack location -i netcdf-fortran@4.5.3%intel@19.0.5.281)
+export NETCDF_FORTRAN_HOME_BIN=$NETCDF_FORTRAN_HOME/bin
+export NETCDF_FORTRAN_HOME_INCLUDE=$NETCDF_FORTRAN_HOME/include
+export NETCDF_FORTRAN_HOME_LIB=$NETCDF_FORTRAN_HOME/lib
+export GC_F_BIN=$NETCDF_FORTRAN_BIN
+export GC_F_INCLUDE=$NETCDF_FORTRAN_INCLUDE
+export GC_F_LIB=$NETCDF_FORTRAN_LIB
+```
+after that
 ```
 cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 make -j
 make install
+cd ..
+ls
 ```
 see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_with_CMake
 
 ### 9. submit task
-now you will find '**gcclassic**' in your dir
+now you will find '**gcclassic**' in your directory, and you can submit your task by
 ```
 qsub task.pbs
 ```
-see template in **/storage/coda1/p-pliu40/0/shared/GEOS-Chem/.templategc13.pbs**\
-or you can find it as **pbstemplate.md** in this git directory\
-copy it to your own run directory and modify
+a template is here, copy it to your own run directory and modify
+```
+#PBS -A GT-pliu40
+#PBS -N GC
+#PBS -l nodes=1:ppn=16
+#PBS -l mem=128gb
+#PBS -l walltime=50:00:00
+#PBS -q inferno
+#PBS -j oe
+#PBS -o gettingStarted.out
+
+source ~/.bashrc
+source ~/.GC
+
+export OMP_NUM_THREADS=16
+export OMP_STACKSIZE=128gb
+
+cd $PBS_O_WORKDIR
+
+./gcclassic > GC.log
+
+exit 0
+```
 ### 10. check your task state
 ```
 qstat -u <username>
