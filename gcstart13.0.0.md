@@ -39,6 +39,10 @@ if you are in Pengfei Liu’s group at Gatech\
 just start from here (spack is already installed)!!
 ********************************************************************
 ### 4. download Source Code in your GEOS-Chem directory ('GC' for me)
+do this if you haven't after this log-in
+```
+source ~/.bashrc
+```
 ```
 cd GC
 git clone https://github.com/geoschem/GCClassic.git GCClassic.13.0.0
