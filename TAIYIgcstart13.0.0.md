@@ -153,6 +153,8 @@ after that
 cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 make -j
 make install
+cd ..
+ls
 ```
 see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_with_CMake
 
