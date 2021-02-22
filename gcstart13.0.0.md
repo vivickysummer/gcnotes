@@ -74,7 +74,7 @@ come to the directory you just created, here I show my setting:
 ```
 cd ~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/
 vi input.geos          # change run time and others
-vi HEMCO.Config.rc     # shut-down several offline emissions and use online extensions
+vi HEMCO_Config.rc     # shut-down several offline emissions and use online extensions
 vi HISTORY.rc          # choose preferred output
 ```
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
