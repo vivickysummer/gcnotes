@@ -46,6 +46,13 @@ git clone https://github.com/geoschem/GCClassic.git GCClassic.13.0.0
 ### 5. get GEOS-Chem and HEMCO as sub-modules
 ```
 cd GCClassic.13.0.0
+```
+examine your folder by
+```
+ls -CF src/*
+```
+and fetch GEOS-Chem and HEMCO file by
+```
 git submodule update --init --recursive
 ```
 you may add '**alias gsu="git submodule update --init --recursive"**' in **~/.bashrc** for convenience
