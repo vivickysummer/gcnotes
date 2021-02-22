@@ -53,11 +53,106 @@ do below in your run directory
 cd build
 source ~/.bashrc 
 ```
-copy it to your own home dir from others
+copy it to your own home dir from others\n
+a template is here:
+```
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+alias la='ls -a'
+alias ll='ls -lhp'
+alias cp='cp -pr'
+alias rm='rm -i'
+
+# Max out machine limits
+ulimit -t unlimited              # cputime
+ulimit -f unlimited              # filesize
+ulimit -d unlimited              # datasize
+ulimit -s unlimited              # stacksize
+ulimit -c unlimited              # coredumpsize
+ulimit -m unlimited              # memoryuse
+ulimit -v unlimited              # vmemoryuse
+ulimit -l unlimited              # memorylocked
+```
 ```
 source ~/.GC 
 ```
-copy it to your own home dir from others
+copy it to your own home dir from others\n
+a template is here:
+```
+# .bashrc
+#==============================================================================
+# %%%%% clear existing environment variables %%%%%
+#==============================================================================
+unset PERL_HOME
+unset CC
+unset CXX
+unset FC
+unset F77
+unset F90
+unset NETCDF_BIN
+unset NETCDF_HOME
+unset NETCDF_INCLUDE
+unset NETCDF_LIB
+unset NETCDF_FORTRAN_BIN
+unset NETCDF_FORTRAN_HOME
+unset NETCDF_FORTRAN_INCLUDE
+unset NETCDF_FORTRAN_LIB
+unset GC_BIN
+unset GC_INCLUDE
+unset GC_LIB
+unset GC_F_BIN
+unset GC_F_INCLUDE
+unset GC_F_LIB
+unset OMP_NUM_THREADS
+unset OMP_STACKSIZE
+#
+##==============================================================================
+# Load spack
+export SPACK_ROOT=/work/ese-baib/spack
+source $SPACK_ROOT/share/spack/setup-env.sh
+
+module purge
+echo "Loading modules for compiler intel@18.0.3..."
+spack load perl%intel@18.0.3
+spack load flex%intel@18.0.3
+spack load openmpi%intel@18.0.3
+spack load netcdf-c%intel@18.0.3
+spack load netcdf-fortran%intel@18.0.3
+#spack load nco%intel@18.0.3
+spack load ncview%intel@18.0.3
+spack load cmake%intel@18.0.3
+
+##=============================================================================
+# define environment variables for compilers
+##=============================================================================
+export FC=ifort
+export CC=icc
+export CXX=icpc
+export F77=ifort
+export F90=ifort
+
+# Environment variables for the netCDF C-language interface
+export NETCDF_HOME=$(spack location -i netcdf-c@4.7.4%intel@19.0.5.281)
+export NETCDF_BIN=$NETCDF_HOME/bin
+export NETCDF_INCLUDE=$NETCDF_HOME/include
+export NETCDF_LIB=$NETCDF_HOME/lib
+export GC_BIN=$NETCDF_BIN
+export GC_INCLUDE=$NETCDF_INCLUDE
+export GC_LIB=$NETCDF_LIB
+
+# Environment variables for the netCDF Fortran-languge interface
+export NETCDF_FORTRAN_HOME=$(spack location -i netcdf-fortran@4.5.3%intel@19.0.5.281)
+export NETCDF_FORTRAN_HOME_BIN=$NETCDF_FORTRAN_HOME/bin
+export NETCDF_FORTRAN_HOME_INCLUDE=$NETCDF_FORTRAN_HOME/include
+export NETCDF_FORTRAN_HOME_LIB=$NETCDF_FORTRAN_HOME/lib
+export GC_F_BIN=$NETCDF_FORTRAN_BIN
+export GC_F_INCLUDE=$NETCDF_FORTRAN_INCLUDE
+export GC_F_LIB=$NETCDF_FORTRAN_LIB
+```
+after that
 ```
 cmake . -DOMP=n -DRUNDIR=../ ../CodeDir
 make -j
