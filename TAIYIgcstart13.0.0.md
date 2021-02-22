@@ -159,11 +159,11 @@ ls
 see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_with_CMake
 
 ### 6. submit task
-now you will find '**gcclassic**' in your dir
+now you will find '**gcclassic**' in your run directory, you can submit your task by
 ```
 bsub < task.job
 ```
-a template is here, copy it to your own run directory and modify
+a template is here, copy it to your own run directory and modify your path and other settings if needed
 ```
 #!/bin/bash
 #BSUB -J TORERO
