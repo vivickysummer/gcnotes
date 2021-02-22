@@ -54,7 +54,7 @@ cd build
 source ~/.bashrc 
 source ~/.GC 
 ```
-a bashrc template is here, copy it to your own home dir
+a .bashrc template is here, copy it to your own home dir
 ```
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -76,7 +76,7 @@ ulimit -m unlimited              # memoryuse
 ulimit -v unlimited              # vmemoryuse
 ulimit -l unlimited              # memorylocked
 ```
-a gc template is here, copy it to your own home dir
+a .gc template is here, copy it to your own home dir
 ```
 # .bashrc
 #==============================================================================
