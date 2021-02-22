@@ -53,7 +53,7 @@ do below in your run directory
 cd build
 source ~/.bashrc 
 ```
-copy it to your own home dir from others\n
+copy it to your own home dir from others\
 a template is here:
 ```
 # Source global definitions
@@ -79,7 +79,7 @@ ulimit -l unlimited              # memorylocked
 ```
 source ~/.GC 
 ```
-copy it to your own home dir from others\n
+copy it to your own home dir from others\
 a template is here:
 ```
 # .bashrc
@@ -165,8 +165,28 @@ now you will find '**gcclassic**' in your dir
 ```
 qsub task.job
 ```
-see template from others
-copy it to your own run directory and modify
+a template is here, copy it to your own run directory and modify
+```
+#!/bin/bash
+#BSUB -J TORERO
+#BSUB -q short
+#BSUB -n 40
+#BSUB -R "span[ptile=40]"
+#BSUB -W 360:00
+#BSUB -o run_%J.out
+#BSUB -e run_%J.err
+
+source ~/.GC
+source ~/.bashrc
+
+export OMP_NUM_THREADS=40
+export OMP_STACKSIZE=2gb
+
+cd /your/run/directory/
+
+time ./gcclassic >> GC.log
+
+```
 ### 7. check your task state
 ```
 bjobs
