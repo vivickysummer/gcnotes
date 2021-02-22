@@ -52,9 +52,9 @@ do below in your run directory
 ```
 cd build
 source ~/.bashrc 
+source ~/.GC 
 ```
-copy it to your own home dir from others\
-a template is here:
+a bashrc template is here, copy it to your own home dir
 ```
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -76,11 +76,7 @@ ulimit -m unlimited              # memoryuse
 ulimit -v unlimited              # vmemoryuse
 ulimit -l unlimited              # memorylocked
 ```
-```
-source ~/.GC 
-```
-copy it to your own home dir from others\
-a template is here:
+a gc template is here, copy it to your own home dir
 ```
 # .bashrc
 #==============================================================================
@@ -163,7 +159,7 @@ see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_w
 ### 6. submit task
 now you will find '**gcclassic**' in your dir
 ```
-qsub task.job
+bsub < task.job
 ```
 a template is here, copy it to your own run directory and modify
 ```
