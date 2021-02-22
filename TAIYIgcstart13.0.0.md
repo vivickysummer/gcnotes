@@ -1,4 +1,4 @@
-## Run GCClassic.13.0.0 in Pace-Cluster
+## Run GCClassic.13.0.0 in Taiyi-Cluster
 > By Bai Bin(*baib@mail.sustech.edu.cn*)\
 > Last updated: 2021/02/22
 
