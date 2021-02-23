@@ -115,7 +115,7 @@ ulimit -m unlimited              # memoryuse
 ulimit -v unlimited              # vmemoryuse
 ulimit -l unlimited              # memorylocked
 ```
-a .gc template is here, copy it to your own home dir
+a .gc template is here, copy it to your own home directory, note that spack is in baib's home directory
 ```
 # .bashrc
 #==============================================================================
