@@ -46,6 +46,11 @@ additionally, you need to change you MET FIELD in **HEMCO_Config.rc** here:
 ROOT:                        /data/ese-shul/data/ExtData/HEMCO
 METDIR:                      /your/met/file/data/ExtData/GEOS_4x5/MERRA2
 ```
+if you do not have a restart file, shut off restart fields in in **HEMCO_Config.rc** here:
+```
+# ----- RESTART FIELDS ----------------------------------------
+    --> GC_RESTART             :       false
+```
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
 ### 5. build run environment
 do below in your run directory
