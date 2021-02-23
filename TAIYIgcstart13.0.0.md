@@ -1,5 +1,5 @@
 ## Run GCClassic.13.0.0 in Taiyi-Cluster
-> By Bai Bin(*baib@mail.sustech.edu.cn*)\
+> Contributed By Bai Bin(*baib@mail.sustech.edu.cn*)\
 > Last updated: 2021/02/23
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
