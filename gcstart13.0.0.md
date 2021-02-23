@@ -77,6 +77,16 @@ vi input.geos          # change run time and others
 vi HEMCO_Config.rc     # shut-down several offline emissions and use online extensions
 vi HISTORY.rc          # choose preferred output
 ```
+additionally, you need to change you MET FIELD in **HEMCO_Config.rc** here:
+```
+ROOT:                        /data/ese-shul/data/ExtData/HEMCO
+METDIR:                      /your/met/file/data/ExtData/GEOS_4x5/MERRA2
+```
+if you do not have a restart file, shut off restart fields in in **HEMCO_Config.rc** here:
+```
+# ----- RESTART FIELDS ----------------------------------------
+    --> GC_RESTART             :       false
+```
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
 ### 8. build run environment
 do below in your run directory, here i.e. **~/p-pliu40-0/GC/rundirs/gc_4x5_fullchem/**
