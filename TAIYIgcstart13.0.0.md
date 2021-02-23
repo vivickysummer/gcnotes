@@ -1,15 +1,49 @@
 ## Run GCClassic.13.0.0 in Taiyi-Cluster
 > By Bai Bin(*baib@mail.sustech.edu.cn*)\
-> Last updated: 2021/02/22
+> Last updated: 2021/02/23
 
 More Info at http://wiki.seas.harvard.edu/geos-chem/index.php/Getting_Started_with_GEOS-Chem
-
-### 1. download Source Code in your GEOS-Chem directory ('GC' for me)
+********************************************************************
+if you are in Zhu Lei’s group at Sustech\
+skip step 1-3 and start from step 4\
+spack is already installed!!!
+********************************************************************
+### 1. download SPACK in home directory
+```
+git clone https://github.com/spack/spack.git
+```
+### 2. load SPACK
+```
+export SPACK_ROOT=/path/to/spack
+source $SPACK_ROOT/share/spack/setup-env.sh
+```
+or just
+```
+source /path/to/spack/share/spack/setup-env.sh
+```
+### 3. download Packages Using 'spack install'
+```
+module load intel/2018.3
+time spack install netcdf-fortran %intel@%intel@18.0.3
+time spack install flex %%intel@18.0.3
+time spack install cmake %%intel@18.0.3
+time spack install gmake %%intel@18.0.3
+time spack install ncview %%intel@18.0.3
+spack load texinfo
+time spack install cgbd %intel@%intel@18.0.3
+time spack install ncl %intel@%intel@18.0.3
+```
+see more at  https://github.com/geoschem/geos-chem-cloud/issues/35\
+********************************************************************
+if you are in Zhu Lei’s group at Sustech\
+just start from here (spack is already installed)!!
+********************************************************************
+### 4. download Source Code in your GEOS-Chem directory ('GC' for me)
 ```
 cd GC
 git clone https://github.com/geoschem/GCClassic.git GCClassic.13.0.0
 ```
-### 2. get GEOS-Chem and HEMCO as sub-modules
+### 5. get GEOS-Chem and HEMCO as sub-modules
 ```
 cd GCClassic.13.0.0
 ```
@@ -22,7 +56,7 @@ and fetch GEOS-Chem and HEMCO file by
 git submodule update --init --recursive
 ```
 you may add '**alias gsu="git submodule update --init --recursive"**' in **~/.bashrc** for convenience
-### 3. copy run directory
+### 6. copy run directory
 ```
 cd run/
 ./createRunDir.sh
@@ -34,7 +68,7 @@ need to type ExtData directory for first time:
 finish your options and set directory to be copied into\
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/Creating_run_directories_for_GEOS-Chem_13.0.0_and_later
 
-### 4. set GEOS-Chem task
+### 7. set GEOS-Chem task
 ```
 cd /your/run/directory/
 vi input.geos          # change run time and others
@@ -52,7 +86,7 @@ if you do not have a restart file, shut off restart fields in in **HEMCO_Config.
     --> GC_RESTART             :       false
 ```
 see more at http://wiki.seas.harvard.edu/geos-chem/index.php/GEOS-Chem_configuration_files
-### 5. build run environment
+### 8. build run environment
 do below in your run directory
 ```
 cd build
@@ -162,7 +196,7 @@ ls
 ```
 see more details at http://wiki.seas.harvard.edu/geos-chem/index.php/Compiling_with_CMake
 
-### 6. submit task
+### 9. submit task
 now you will find '**gcclassic**' in your run directory, you can submit your task by
 ```
 bsub < task.job
@@ -190,7 +224,7 @@ time ./gcclassic >> GC.log
 
 exit 0
 ```
-### 7. check your task state
+### 10. check your task state
 ```
 bjobs
 ```
