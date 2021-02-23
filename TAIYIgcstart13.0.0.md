@@ -122,7 +122,6 @@ spack load flex%intel@18.0.3
 spack load openmpi%intel@18.0.3
 spack load netcdf-c%intel@18.0.3
 spack load netcdf-fortran%intel@18.0.3
-#spack load nco%intel@18.0.3
 spack load ncview%intel@18.0.3
 spack load cmake%intel@18.0.3
 
